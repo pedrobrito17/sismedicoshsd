@@ -1,0 +1,63 @@
+<div th:fragment="turno-trabalho" th:each="medico : ${medicos}">
+ <div class="modal fade" th:attr="id=${medico.crm}" role="dialog">
+ <div class="modal-dialog">					    
+     <!-- Modal content-->
+     <div class="modal-content">
+     <div class="modal-body">
+
+		<table class="table table-bordered" >
+			<tbody>							
+				<td>Manhã</td>
+				<tr:block th:each="res : ${medico.restricoes}">
+					<td class="text-center" th:if="${res.turno} == manha">
+						<span th:text="${res.dia_semana}"></span>
+					</td>
+				</tr:block>
+				<tr></tr>
+				<td>Tarde</td>
+				<tr:block th:each="res : ${medico.restricoes}">
+					<td class="text-center" th:if="${res.turno} == tarde">
+						<span th:text="${res.dia_semana}"></span>
+					</td>
+				</tr:block>
+				<tr></tr>
+				<td>Noite</td>
+				<tr:block th:each="res : ${medico.restricoes}">
+					<td class="text-center" th:if="${res.turno} == noite">
+						<span th:text="${res.dia_semana}"></span>
+					</td>
+				</tr:block>
+			</tbody>
+		</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div th:fragment="excluir-medico" th:each="medico : ${medicos}">
+ <div class="modal fade" th:attr="id=${medico.crm}+'excluir'" role="dialog">
+ <div class="modal-dialog">					    
+     <!-- Modal content-->
+     <div class="modal-content">
+     	<div class="modal-body">
+	 		<h4>Tem certeza que deseja excluir o(a) médico(a) <b th:text="${medico.nome}"></b>? </h4>	 	
+	 	</div>
+	 	<div class="modal-footer">
+	 		<form method="get" th:action="@{/hsdmedicos/excluirmedico}" >
+	 			<input class="hidden" type="number" name="crm" th:value="${medico.crm}">
+	 			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	 			<button type="submit" class="btn btn-primary">Confirmar</button>
+	 		</form>	 	
+	 	</div>	
+	</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+

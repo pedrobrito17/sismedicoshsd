@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+	<head>
+  		<script th:src="@{/vendors/jquery/jquery.js}"></script>
+	</head>
+
+<body>
+	<section layout:fragment="conteudo">	
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Férias do médico
+				</h1>
+			</div>
+		</div>
+		<div class="container-fluid">
+			
+			<!-- MENSAGEM DE SUCESSO -->
+		    <div th:replace="layout/mensagens-alerta :: mensagem-sucesso"></div>
+		
+			<form th:method="GET" th:action="@{/hsdmedicos/salvarferias}" th:object="${ferias}" class="form-inline" >
+				
+				<!-- MENSAGEM DE ERRO NO FORMULÁRIO -->
+				<div th:replace="layout/mensagens-alerta :: mensagem-erro"></div>
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default">
+					    	<div class="panel-heading"><h5><b th:text="${med.nome}">Férias</b></h5></div>
+							<div class="panel-body">
+								<div class="form-group">
+									de
+									<input th:field="*{dt_inicio}" class="form-control datepicker" autocomplete="off"/>
+									a
+									<input th:field="*{dt_fim}" class="form-control datepicker" autocomplete="off"/>
+									<button type="submit" class="btn btn-success">SALVAR FÉRIAS</button>
+									
+								</div>			
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-2">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th class="text-center">#</th>
+						<th class="text-center">Data de início</th>
+						<th class="text-center">Data final</th>
+						<th class="text-center">Excluir</th>
+					</tr>			
+					<tr th:each=" fer,conta : ${todasFerias}">
+						<td class="text-center" th:text="${conta.count}"></td>
+						<td class="text-center" th:text="${#dates.format(fer.dt_inicio, 'dd MMM yyyy')}"></td>
+						<td class="text-center" th:text="${#dates.format(fer.dt_fim, 'dd MMM yyyy')}"></td>
+						<td class="text-center">
+						<a th:href="@{/hsdmedicos/excluirferias/{id}(id=${fer.id})}" title="Excluir férias"> 
+							<img th:src="@{/images/delete.png}">
+						</a>
+						</td>
+					</tr>				
+				</table>
+			</div>
+		</div>
+		
+  		<div th:replace="layout/fragment-java-script :: datepicker"></div>	
+	</section>
+</body>
+</html>

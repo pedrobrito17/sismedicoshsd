@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SisMedHsdApplication",
+            "request": "launch",
+            "mainClass": "com.sismed.sismedhsd.SisMedHsdApplication",
+            "projectName": "sismedhsd"
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+	<head>
+  		<script th:src="@{/vendors/jquery/jquery.js}"></script>
+	</head>
+
+<body>
+	<section layout:fragment="conteudo">	
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Pedidos do médico
+				</h1>
+			</div>
+		</div>
+		<div class="container-fluid">
+			
+			<!-- MENSAGEM DE SUCESSO -->
+		    <div th:replace="layout/mensagens-alerta :: mensagem-sucesso"></div>
+		
+			<form th:method="GET" th:action="@{/hsdmedicos/salvarpedido}" th:object="${pedido}" >
+				
+				<!-- MENSAGEM DE ERRO NO FORMULÁRIO -->
+				<div th:replace="layout/mensagens-alerta :: mensagem-erro"></div>
+
+				<div class="panel panel-default">
+			    	<div class="panel-heading"><h5><b th:text="${med.nome}">Pedido</b></h5></div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="data" >Data</label>
+									<input id="data" th:field="*{data}" class="form-control datepicker" autocomplete="off"/>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Turno</label>
+									<select class="form-control" th:field="*{turno}">
+										<option value=""></option>
+										<option value="manha">MANHÃ</option>
+										<option value="tarde">TARDE</option>
+										<option value="noite">NOITE</option>
+										<option value="todos">TODOS OS TURNOS</option>
+									</select>
+								</div>	
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Tipo do pedido</label>
+									<select class="form-control" th:field="*{tipo_pedido}">
+										<option th:value="${true}">TRABALHAR</option>
+										<option th:value="${false}">NÃO TRABALHAR</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<button type="submit" class="btn btn-success" style="margin-top:22px;">ADICIONAR PEDIDO</button>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-2">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th class="text-center">#</th>
+						<th class="text-center">Data</th>
+						<th class="text-center">Turno</th>
+						<th class="text-center">Tipo do pedido</th>
+						<th class="text-center">Excluir</th>
+					</tr>			
+					<tr th:each=" ped,conta : ${todosPedidos}">
+						<td class="text-center" th:text="${conta.count}"></td>
+						<td class="text-center" th:text="${#dates.format(ped.data, 'dd MMM yyyy')}"></td>
+						<td class="text-center" th:text="${ped.turno}"></td>
+						<td class="text-center" th:text="${ped.tipo_pedido} ? 'Trabalhar' : 'Não trabalhar'"></td>
+						<td class="text-center">
+						<a th:href="@{/hsdmedicos/excluirpedido/{id}(id=${ped.id})}" title="Excluir pedido"> 
+							<img th:src="@{/images/delete.png}">
+						</a>
+						</td>
+					</tr>				
+				</table>
+			</div>
+		</div>
+		
+  		<div th:replace="layout/fragment-java-script :: datepicker"></div>	
+	</section>
+</body>
+</html>

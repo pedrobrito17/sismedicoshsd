@@ -1,0 +1,72 @@
+<div th:fragment="tabela-relatorio-semanal" class="table-responsive">
+	<style type="text/css">
+		.salmao {
+			background: #FA8072;
+			/* Linhas com fundo cinza */
+		}
+
+		.verde {
+			background: #3CB371;
+		}
+
+		.azul {
+			background: #20B2AA;
+		}
+
+		.cinza {
+			background: #A9A9A9;
+		}
+
+		.coral {
+			background: #BDB76B;
+		}
+
+		.chocolate {
+			background: #D2691E;
+		}
+	</style>
+
+	<div class="container-fluid">
+
+		<table id="tabela" class="table table-bordered">
+			<thead>
+				<tr class="cinza">
+					<th>#</th>
+					<div th:each="qtd : ${qtd_semanas}">
+						<th class="text-center" th:text="'Semana '+${qtd}">Semana s</th>
+					</div>
+					<th class="text-center">Total TF</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		// variaveis globais
+		var semana_1;
+		var semana_2;
+		var semana_3;
+		var semana_4;
+		var semana_5;
+		var semana_6;
+		var qtd_semanas;
+		var turnosTotaisFolga;
+	</script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		/* Cria a contagem */
+		semana_1 = /*[[${semana_1}]]*/ "a";
+		semana_2 = /*[[${semana_2}]]*/ "b";
+		semana_3 = /*[[${semana_3}]]*/ "c";
+		semana_4 = /*[[${semana_4}]]*/ "d";
+		semana_5 = /*[[${semana_5}]]*/ "e";
+		semana_6 = /*[[${semana_6}]]*/ "f";
+		qtd_semanas = /*[[${qtd_semanas}]]*/ "g";
+		turnosTotaisFolga = /*[[${sem}]]*/ "h";
+		
+		/*]]*/
+	</script>
+	<script th:src="@{/javascripts/relatorio.js}"></script>
+</div>

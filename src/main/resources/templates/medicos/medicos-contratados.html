@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+
+<body>
+	<section layout:fragment="conteudo">	
+		
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Médicos contratados</h1>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive panel panel-default">
+						<table class="table table-bordered">
+							<thead>
+								<th>#</th>
+								<th>Nome completo</th>
+								<th>CRM</th>
+								<th>Ações</th>
+							</thead>
+							<tbody>
+								<tr th:each="medico,conta : ${medicos}">
+									<td th:text="${conta.count}"></td>
+									<td th:text="${medico.nome}"></td>
+									<td th:text="${medico.crm}"></td>
+									<td class="text-center"><a href="#" data-toggle="modal" title="Visualizar" 
+										th:attr="data-target='#'+${medico.crm}"><img th:src="@{/images/eye.png}"></a>
+										<a th:href="@{/hsdmedicos/editarmedico/{crm}(crm=${medico.crm})}" title="Editar"><img th:src="@{/images/edit.png}"></a>
+										<a th:href="@{/hsdmedicos/pedidos/{crm}(crm=${medico.crm})}"><img th:src="@{/images/task.png}" title="Pedidos"></a>
+										<a th:href="@{/hsdmedicos/ferias/{crm}(crm=${medico.crm})}"><img th:src="@{/images/beach.png}" title="Férias"></a>
+										<a href="#" data-toggle="modal" title="Excluir" 
+										th:attr="data-target='#'+${medico.crm}+'excluir'"><img th:src="@{/images/delete.png}"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					  
+					    <div th:replace="layout/modal-medico :: turno-trabalho"></div>
+					    <div th:replace="layout/modal-medico :: excluir-medico"></div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div th:replace="layout/fragment-java-script :: js"></div>
+	</section>	
+
+
+</body>
+</html>

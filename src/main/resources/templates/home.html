@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+<body>
+	<section layout:fragment="conteudo">
+	
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Bem vindo ao sistema gerenciador das escalas de trabalho!
+			</h1>
+		</div>
+		<div class="container-fluid">
+			<h4>Use o menu ao lado para navegar.</h4>
+		</div>
+	</div>
+	
+	<div th:replace="layout/fragment-java-script :: js"></div>
+	</section>	
+</body>
+</html>

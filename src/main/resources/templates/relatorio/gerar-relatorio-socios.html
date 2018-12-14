@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+	<head>
+  		<script th:src="@{/vendors/jquery/jquery.js}"></script>
+	</head>
+
+<body>
+	<section layout:fragment="conteudo">			
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Relatório da escala dos médicos sócios
+				</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			
+			<form method="GET" th:action="@{/hsdmedicos/relatoriosocios}">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<span>Período do relatório</span>
+					</div>
+	  				<div class="panel-body">
+	  					<div class="form-group form-inline">
+	  						<label>Mês</label>
+							<select id="meses" class="form-control" name="mes">
+							</select>
+							<label>Ano</label>
+							<select id="selecAno" name="ano" class="form-control">							
+							</select>
+							<button type="submit" class="btn btn-success">Gerar relatório</button>
+						</div>
+	  				</div>
+				</div>				
+			</form>
+		</div>
+		<div th:replace="layout/fragment-java-script :: js"></div>
+		<script>
+		$(document).ready(function(){
+			var meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+			var data = new Date();
+			for(j=0 ; j < 12 ; j++){
+				//Janeiro a Novembro
+				if(data.getMonth() < 11 && data.getMonth()+1 == j){
+					$('#meses').append("<option type='number' value="+(j+1)+" selected>"+meses[j]+"</option>");
+				}else if(data.getMonth() == 11 && j==0){ //Dezembro
+					$('#meses').append("<option type='number' value="+(j+1)+">"+meses[j]+"</option>");
+				}else{
+					$('#meses').append("<option type='number' value="+(j+1)+">"+meses[j]+"</option>");
+				}
+							
+			}
+			for(i = 17 ; i < 51 ; i++){
+				if(data.getFullYear()+1 == 2000+i && data.getMonth() == 11){
+					$("#selecAno").append("<option type='number' value=20"+i+" selected >20"+i+"</option>");
+				}else if(data.getFullYear() == 2000+i){
+					$("#selecAno").append("<option type='number' value=20"+i+" selected >20"+i+"</option>");
+				}else{
+					$("#selecAno").append("<option type='number' value=20"+i+">20"+i+"</option>");
+				}
+					
+			}				
+		});			
+		</script>		
+	</section>	
+</body>
+</html>

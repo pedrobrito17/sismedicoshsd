@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title>Sistema de Escalas HSD</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" th:href="@{/images/medical-icon.ico}" type="image/ico" />
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/algaworks.min.css}" />
+	<style>
+		.navbar-default2 {
+			background-color: #27ae60;
+			border-color: #2ecc71;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="aw-layout-page">
+		<nav class="navbar  navbar-fixed-top  navbar-default  js-sticky-reference navbar-default2" id="main-navbar">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand  hidden-xs" href="#">
+						<span class="titulo"><b>Sistema de Escalas HSD</b></span>
+					</a>
+					<ul class="nav  navbar-nav">
+						<li>
+							<a href="#" class="js-sidebar-toggle"><i class="fa  fa-bars"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<aside class="aw-layout-sidebar  js-sidebar">
+			<div class="aw-layout-sidebar__content">
+				<nav class="aw-menu  js-menu">
+					<ul class="aw-menu__list">
+						<li class="aw-menu__item">
+							<a th:href="@{/}"><i class="fa  fa-fw  fa-home"></i><span>Home</span></a>
+						</li>
+						<li class="aw-menu__item  is-expanded">
+							<a href="#">
+								<i class="fa  fa-fw  fa-file-text"></i><span>Médicos</span>
+								<i class="aw-menu__navigation-icon  fa"></i>
+							</a>
+							<ul class="aw-menu__list  aw-menu__list--sublist">
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/cadastromedico}">Cadastro do médico</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/medicosassociados}">Médicos sócios</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/medicoscontratados}">Médicos
+										contratados</a></li>
+							</ul>
+						</li>
+						<li class="aw-menu__item  is-expanded">
+							<a href="#">
+								<i class="fa  fa-fw  fa-file-text"></i><span>Escalas</span>
+								<i class="aw-menu__navigation-icon  fa"></i>
+							</a>
+							<ul class="aw-menu__list  aw-menu__list--sublist">
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/novaescala}">Nova escala</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/feriado}">Inserir feriado</a></li>
+							</ul>
+						</li>
+						<li class="aw-menu__item  is-expanded">
+							<a href="#">
+								<i class="fa  fa-fw  fa-file-text"></i><span>Relatórios</span>
+								<i class="aw-menu__navigation-icon  fa"></i>
+							</a>
+							<ul class="aw-menu__list  aw-menu__list--sublist">
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/novorelatoriosocios}">Relatório sócios</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/novorelatoriocontratados}">Relatório
+										contratados</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a th:href="@{/hsdmedicos/novorelatoriosemanal}">Relatório
+										semanal</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</aside>
+
+		<section class="aw-layout-content js-content" layout:fragment="conteudo" />
+
+		<footer class="aw-layout-footer  js-content">
+			<div class="container-fluid">
+				<span class="aw-footer-disclaimer">&copy; 2018. Todos os direitos reservados - by <a href="http://www.italobrito.com.br"
+					 target="_blank">Italo Brito</a></span>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>

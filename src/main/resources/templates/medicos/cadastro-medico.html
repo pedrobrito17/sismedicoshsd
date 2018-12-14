@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+
+<body>
+	<section layout:fragment="conteudo">	
+		
+		<div class="page-header">
+	<div class="container-fluid">
+		<h1>
+			Cadastro do médico
+		</h1>
+	</div>
+</div>
+
+<div class="container-fluid">
+	
+	<!-- MENSAGEM DE SUCESSO -->
+    <div th:replace="layout/mensagens-alerta :: mensagem-sucesso"></div> 
+
+	<form th:method="post" th:action="@{/hsdmedicos/cadastrarmedico}" th:object="${medico}" class="form-vertical  js-form-loading">
+		
+		<!-- MENSAGEM DE ERRO NO FORMULÁRIO -->
+		<div th:replace="layout/mensagens-alerta :: mensagem-erro"></div>
+		
+		<div class="form-group">
+			<label for="input-nome">Nome</label>
+			<input id="input-nome" type="text" class="form-control" th:field="*{nome}"/>
+			*Digite até dois nomes para o médico
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="input-crm">CRM</label>
+					<input id="input-crm" type="number" class="form-control" th:field="*{crm}"/>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="input-categoria">Categoria</label>
+					<select id="input-categoria" class="form-control" th:field="*{categoria}">
+				      <option value="socio">sócio</option>
+				      <option value="contratado">contratado</option>
+				    </select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="input-funcao">Função</label></br>
+				<label th:each="func : ${funcoes}"  class="checkbox-inline">
+			      <input type="checkbox" th:value="${func.id_funcao}" th:text="${func.funcao}" th:field="*{funcoes}" >
+			    </label>
+			</div>
+		</div></br>
+		
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="form-group table-responsive panel panel-default">
+					<div class="panel-heading"><h5><b>Turnos de trabalho</b></h5></div>
+					
+					<table class="table table-bordered">
+							<thead>
+								<th>#</th>
+								<th>Domingo</th>
+								<th>Segunda-feira</th>
+								<th>Terça-feira</th>
+								<th>Quarta-feira</th>
+								<th>Quinta-feira</th>
+								<th>Sexta-feira</th>
+								<th>Sábado</th>
+							</thead>
+							<tbody>							
+								<td>Manhã</td>
+								<tr:block th:each="res : ${restricoes}">
+									<td th:if="${res.turno} == manha">
+										<input th:value="${res.id_restricao}" th:field="*{restricoes}" class="form-control" type="checkbox"/>
+									</td>
+								</tr:block>
+								<tr></tr>
+								<td>Tarde</td>
+								<tr:block th:each="res : ${restricoes}">
+									<td th:if="${res.turno} == tarde">
+										<input th:value="${res.id_restricao}" th:field="*{restricoes}" class="form-control" type="checkbox"/>
+									</td>
+								</tr:block>
+								<tr></tr>
+								<td>Noite</td>
+								<tr:block th:each="res : ${restricoes}">
+									<td th:if="${res.turno} == noite">
+										<input th:value="${res.id_restricao}" th:field="*{restricoes}" class="form-control" type="checkbox"/>
+									</td>
+								</tr:block>
+							</tbody>
+					</table>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		<div class="form-group">
+			<a href="javascript:history.back()" class="btn  btn-danger">Cancelar</a>
+			<button class="btn  btn-success" type="submit">Salvar médico</button>
+			
+		</div>
+
+	</form>
+</div>
+		
+	<div th:replace="layout/fragment-java-script :: js"></div>	
+	</section>	
+</body>
+</html>
