@@ -21,7 +21,7 @@ public class FeriadoController {
 	
 	@RequestMapping("/feriado")
 	public ModelAndView getPageFeriado(){
-		ModelAndView mv = new ModelAndView("/feriado/feriado");
+		ModelAndView mv = new ModelAndView("feriado/feriado");
 		mv.addObject("feriado", new Feriado());
 		mv.addObject("todosFeriados", feriadoService.getTodosFeriados());
 		return mv;
