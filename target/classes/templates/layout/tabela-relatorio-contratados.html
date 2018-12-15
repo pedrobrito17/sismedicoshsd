@@ -1,0 +1,104 @@
+<div th:fragment="tabela-relatorio-med-contratados" class="table-responsive">
+	<table id="tabela" class="table table-striped table-bordered" >
+			<tr>
+				<th>#</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<th class="text-center" th:text="${nome}" th:attr="id=medico+${id.count}">Nome</th>
+				</div>
+			</tr>
+			<tr>
+				<th>M5</th>	
+					<div th:each="nome,id : ${nomeMedicos}">
+						<td class="text-center" th:attr="id=l01_cel+${id.count}">0</td>
+					</div>		
+			</tr>
+			<tr>
+				<th>HRO</th>
+				<div th:each="nome,id2 : ${nomeMedicos}">	
+					<td class="text-center" th:attr="id=l02_cel+${id2.count}">0</td>		
+				</div>		
+			</tr>
+			<tr>
+				<th>Manhã</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=manha_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tardes</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+			<tr>
+				<th>Noites</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=noite_cel+${id.count}">0</td>
+				</div>
+			</tr>
+	</table>
+	
+	<script th:inline="javascript">
+	/*<![CDATA[*/
+	
+		/* Cria a contagem */
+		var nomes = /*[[${nomeMedicos}]]*/ "e";
+		var contM5 = /*[[${contM5}]]*/ "c";
+		var contHro = /*[[${contHro}]]*/ "d";
+		var contManha = /*[[${contManha}]]*/ "a";
+		var contTardes = /*[[${contTardes}]]*/ "x";
+		var contNoites = /*[[${contNoites}]]*/ "y";
+		
+		
+		
+		var qtdCelulas = nomes.length;
+		
+		for(i = 1 ; i < qtdCelulas+1 ; i++){
+			/* Escreve na linha M5 */
+			for(var j in contM5){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contM5[j].nome){
+					$('#l01_cel'+i).empty();
+					$('#l01_cel'+i).append(contM5[j].cont);
+				}
+			}
+			/* Escreve na linha HRO */
+			for(var j in contHro){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contHro[j].nome){
+					$('#l02_cel'+i).empty();
+					$('#l02_cel'+i).append(contHro[j].cont);
+				}
+			}
+			/* Escreve na linha manhã */
+			for(var j in contManha){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contManha[j].nome){
+					$('#manha_cel'+i).empty();
+					$('#manha_cel'+i).append(contManha[j].cont);
+				}
+			}
+			/* Escreve na linha tarde */
+			for(var j in contTardes){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contTardes[j].nome){
+					$('#tarde_cel'+i).empty();
+					$('#tarde_cel'+i).append(contTardes[j].cont);
+				}
+			}
+			/* Escreve na linha noite */
+			for(var j in contNoites){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contNoites[j].nome){
+					$('#noite_cel'+i).empty();
+					$('#noite_cel'+i).append(contNoites[j].cont);
+				}
+			}
+			
+		}
+	 	
+	 	
+	/*]]*/
+	</script>
+</div>

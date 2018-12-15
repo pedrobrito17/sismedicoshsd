@@ -1,0 +1,221 @@
+<div th:fragment="tabela-relatorio-med-socios" class="table-responsive">
+	<table id="tabela" class="table table-striped table-bordered" >
+			<tr>
+				<th>#</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<th class="text-center" th:text="${nome}" th:attr="id=medico+${id.count}">Nome</th>
+				</div>
+			</tr>
+			<tr>
+				<th>M5</th>	
+					<div th:each="nome,id : ${nomeMedicos}">
+						<td class="text-center" th:attr="id=l01_cel+${id.count}">0</td>
+					</div>		
+			</tr>
+			<tr>
+				<th>HRO</th>
+				<div th:each="nome,id2 : ${nomeMedicos}">	
+					<td class="text-center" th:attr="id=l02_cel+${id2.count}">0</td>		
+				</div>		
+			</tr>
+			<tr>
+				<th>Manhã</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=manha_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tarde 01</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde01_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tarde 02</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde02_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tarde 03</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde03_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tarde 04</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde04_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tarde 05</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde05_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Tarde 06</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tarde06_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Noite 01</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=noite01_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Noite 02</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=noite02_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Fim de semana</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=fds_cel+${id.count}">0</td>
+				</div>
+			</tr>
+			<tr>
+				<th>Turnos de folga</th>
+				<div th:each="nome,id : ${nomeMedicos}">
+					<td class="text-center" th:attr="id=tf_cel+${id.count}">0</td>
+				</div>
+			</tr>
+	</table>
+	
+	<script th:inline="javascript">
+	/*<![CDATA[*/
+	
+		/* Cria a contagem */
+		var nomes = /*[[${nomeMedicos}]]*/ "e";
+		var contM5 = /*[[${contM5}]]*/ "c";
+		var contHro = /*[[${contHro}]]*/ "d";
+		var contManha = /*[[${contManha}]]*/ "a";
+		var contTurnosFolga = /*[[${contTurnosFolga}]]*/ "k";
+		var lista_t1 = /*[[${lista_t1}]]*/ "l";
+		var lista_t2 = /*[[${lista_t2}]]*/ "q";
+		var lista_t3 = /*[[${lista_t3}]]*/ "w";
+		var lista_t4 = /*[[${lista_t4}]]*/ "r";
+		var lista_t5 = /*[[${lista_t5}]]*/ "t";
+		var lista_t6 = /*[[${lista_t6}]]*/ "y";
+		var lista_n1 = /*[[${lista_n1}]]*/ "h";
+		var lista_n2 = /*[[${lista_n2}]]*/ "x";
+		var qtd_fds = /*[[${qtd_fds}]]*/ "o";
+		
+		
+		var qtdCelulas = nomes.length;
+		
+		for(i = 1 ; i < qtdCelulas+1 ; i++){
+			/* Escreve na linha M5 */
+			for(var j in contM5){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contM5[j].nome){
+					$('#l01_cel'+i).empty();
+					$('#l01_cel'+i).append(contM5[j].cont);
+				}
+			}
+			/* Escreve na linha HRO */
+			for(var j in contHro){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contHro[j].nome){
+					$('#l02_cel'+i).empty();
+					$('#l02_cel'+i).append(contHro[j].cont);
+				}
+			}
+			/* Escreve na linha manhã */
+			for(var j in contManha){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contManha[j].nome){
+					$('#manha_cel'+i).empty();
+					$('#manha_cel'+i).append(contManha[j].cont);
+				}
+			}
+			/* Escreve na linha tarde 01 */
+			for(var j in lista_t1){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_t1[j].nome){
+					$('#tarde01_cel'+i).empty();
+					$('#tarde01_cel'+i).append(lista_t1[j].cont);
+				}
+			}
+			/* Escreve na linha tarde 02 */
+			for(var j in lista_t2){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_t2[j].nome){
+					$('#tarde02_cel'+i).empty();
+					$('#tarde02_cel'+i).append(lista_t2[j].cont);
+				}
+			}
+			/* Escreve na linha tarde 03 */
+			for(var j in lista_t3){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_t3[j].nome){
+					$('#tarde03_cel'+i).empty();
+					$('#tarde03_cel'+i).append(lista_t3[j].cont);
+				}
+			}
+			/* Escreve na linha tarde 04 */
+			for(var j in lista_t4){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_t4[j].nome){
+					$('#tarde04_cel'+i).empty();
+					$('#tarde04_cel'+i).append(lista_t4[j].cont);
+				}
+			}
+			/* Escreve na linha tarde 05 */
+			for(var j in lista_t5){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_t5[j].nome){
+					$('#tarde05_cel'+i).empty();
+					$('#tarde05_cel'+i).append(lista_t5[j].cont);
+				}
+			}
+			/* Escreve na linha tarde 06 */
+			for(var j in lista_t6){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_t6[j].nome){
+					$('#tarde06_cel'+i).empty();
+					$('#tarde06_cel'+i).append(lista_t6[j].cont);
+				}
+			}
+			/* Escreve na linha noite 01 */
+			for(var j in lista_n1){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_n1[j].nome){
+					$('#noite01_cel'+i).empty();
+					$('#noite01_cel'+i).append(lista_n1[j].cont);
+				}
+			}
+			/* Escreve na linha noite 02 */
+			for(var j in lista_n2){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == lista_n2[j].nome){
+					$('#noite02_cel'+i).empty();
+					$('#noite02_cel'+i).append(lista_n2[j].cont);
+				}
+			}
+			/* Escreve na linha fim de semana */
+			for(var j in qtd_fds){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == qtd_fds[j].nome){
+					$('#fds_cel'+i).empty();
+					$('#fds_cel'+i).append(qtd_fds[j].cont);
+				}
+			}
+			/* Escreve na linha turnos de folga */
+			for(var j in contTurnosFolga){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contTurnosFolga[j].nome){
+					$('#tf_cel'+i).empty();
+					$('#tf_cel'+i).append(contTurnosFolga[j].cont);
+				}
+			}
+		}
+	 	
+	 	
+	/*]]*/
+	</script>
+</div>

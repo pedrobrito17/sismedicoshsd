@@ -1,0 +1,27 @@
+@page {
+    margin: 1cm 1cm 1cm 0.6cm;
+}
+
+body{
+	color: #000;
+	font-size: 14px !important;
+}
+
+.table-bordered > thead > tr > th {
+	background-color: #cbccce !important;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+   border: 0.5px solid #444343 !important;
+   color: #000 !important;
+}
+
+span{
+	font-size: 14px !important;
+}
+

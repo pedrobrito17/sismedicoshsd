@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Escala</title>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" th:href="@{/dragdrop/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/dragdrop/css/escala.pdf.css}" />
+  <link rel="stylesheet" type="text/css" media="print" th:href="@{/dragdrop/css/print.css}" />
+</head>
+
+<body id="mypdf">
+  <h6 class="h6-custom" style="margin: 0px;" th:text="${tituloEscala}"></h6>
+  <table th:each="contSem : ${qtdsem}" class="table table-bordered table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th id="id-turno" scope="col" class="text-center">#</th>
+        <th scope="col">Domingo</th>
+        <th scope="col">Segunda</th>
+        <th scope="col">Terça</th>
+        <th scope="col">Quarta</th>
+        <th scope="col">Quinta</th>
+        <th scope="col">Sexta</th>
+        <th scope="col">Sábado</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- Manhã -->
+      <th scope="row" class="align-middle text-center">Manhã</th>
+      <tr:block th:each="q : ${qtd}">
+        <td class="manha">
+          <div class="grid">
+          </div>
+        </td>
+      </tr:block>
+      <tr></tr>
+
+      <!-- TARDE -->
+      <th scope="row" class="align-middle text-center">Tarde</th>
+      <tr:block th:each="q : ${qtd}">
+        <td class="tarde">
+          <div class="grid">
+          </div>
+        </td>
+      </tr:block>
+      <tr></tr>
+
+      <!-- Noite -->
+      <tr>
+        <th scope="row" class="align-middle text-center">Noite</th>
+        <tr:block th:each="q : ${qtd}">
+          <td class="noite">
+            <div class="grid">
+            </div>
+          </td>
+        </tr:block>
+      </tr>
+    </tbody>
+  </table>
+  <div style="color: red;" id="feriados"></div>
+
+  <script th:src="@{/dragdrop/js/jquery.min.js}"></script>
+  <script type="text/javascript">
+    window.onload = function () {
+      window.print();
+    }
+    $('#mypdf').on('mouseenter', function () {
+       window.close();
+    });
+   
+    //Variáveis globais
+    var gridIndex = -1;
+    var month;
+    var year;
+
+    //Variáveis globaix do thymeleaf
+    var data;
+    var medsM5;
+    var medsHro;
+    var medsEscalados;
+    var feriados;
+
+    //Insere uma classe única para cada grid
+    //Isso permite a identificação do grid específico para adicionar elemento
+    var grids = document.querySelectorAll('.grid');
+    for (let index = 0; index < grids.length; index++) {
+      grids[index].className = 'grid grid-' + index;
+    }
+  </script>
+
+  <!-- Recebendo dados thymeleaf -->
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    datas = /*[[${datas}]]*/ "d";
+    medsM5 = /*[[${escalaM5}]]*/ "e";
+    medsHro = /*[[${escalaHro}]]*/ "h";
+    medsEscalados = /*[[${medicosEscalados}]]*/ "m";
+    feriados = /*[[${feriados}]]*/ "n";
+
+    var data = new Date(datas[0]);
+    month = data.getMonth();
+    year = data.getFullYear();
+    /*]]*/
+  </script>
+
+  <script th:src="@{/dragdrop/js/assembler.pdf.js}"></script>
+</body>
+
+</html>
