@@ -6,9 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.sismed.sismedhsd.model.Ordem;
 
+@Repository
 public interface Ordens extends JpaRepository<Ordem, Integer>{
 
 	Ordem findByMedico_crmAndEscala_id(int crmMedico, int idEscala);
