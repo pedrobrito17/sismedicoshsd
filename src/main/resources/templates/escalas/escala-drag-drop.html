@@ -91,11 +91,12 @@
 
   <script th:src="@{/dragdrop/js/jquery.min.js}"></script>
   <script type="text/javascript">
-    var endereco = "/hsdmedicos";
+    var endereco = "https://sismedhsd.herokuapp.com/hsdmedicos";
+    //var endereco = "http://localhost:8080/hsdmedicos";
 
     function abrirPaginaPDF() {
       var win = window.open(
-        'http://localhost:8080' + endereco + '/escalapdf',
+        endereco + '/escalapdf',
         'pagina',
         'width=900, height=500, top=60, left=150, scrollbars=no');
 
