@@ -24,14 +24,14 @@ public class Medico implements Serializable{
 	@NotNull(message="{crm.vazio}")
 	@Min(100)
 	private int crm;
-	
-	@NotBlank(message="{nome.vazio}")
-	public String nome;
+
+	private boolean ativo = true;
 	
 	@NotNull(message="{categoria.vazia}")
 	private String categoria;
 	
-	private boolean ativo = true;
+	@NotBlank(message="{nome.vazio}")
+	public String nome;
 	
 	@JsonIgnore //Faz o json ignorar a conversao. Não quero estas relacoes.
 	@ManyToMany

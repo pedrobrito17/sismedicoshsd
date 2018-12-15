@@ -5,7 +5,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.5.4.RELEASE</version>
-		<relativePath/>
+    <relativePath/>
   </parent>
   <groupId>com.sismed</groupId>
   <artifactId>sismedhsd</artifactId>
@@ -14,15 +14,12 @@
   <description>Demo project for Spring Boot</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		
-		<thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
-		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
-		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
+    <thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
+    <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
   </properties>
-
-  
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -48,11 +45,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
       <scope>compile</scope>
@@ -61,6 +53,25 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jdbc</artifactId>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>bootstrap-datepicker</artifactId>
+      <version>1.6.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
   <build>
