@@ -47,20 +47,38 @@ function acionaMenu(event, index, id) {
         }
     }
 
-    //chama o ajax
-    $.ajax({
-            url: endereco+'/escaladragdrop/listamedicos/' + req,
-            type: 'GET'
-        })
-        .done(function (resposta) {
-            $('.menu-med-add').html(resposta);
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert("Desculpe! Houve um erro: " + jqXHR.status);
-        });
+    // //chama o ajax
+    // $.ajax({
+    //         url: endereco+'/escaladragdrop/listamedicos/' + req,
+    //         type: 'GET'
+    //     })
+    //     .done(function (resposta) {
+    //         $('.menu-med-add').html(resposta);
+    //     })
+    //     .fail(function (jqXHR, textStatus, errorThrown) {
+    //         alert("Desculpe! Houve um erro: " + jqXHR.status);
+    //     });
+
+    $('.menu-med-add').load(endereco + '/escaladragdrop/listamedicos/' + req);
 
     //Após o tempo de 100 ms executa o código abaixo
     setTimeout(function () {
+        //Posiciona o menu de acordo com o botão acionado e o tamanho da tela
+        var tamTela = screen.width;
+        var coordX = event.pageX;
+        if (coordX < (tamTela / 2)) {
+            $('.div-medico').css('float', 'left');
+            $('.div-funcao').css('float', 'left');
+            $('.menu-med-add').css('top', event.pageY - 20);
+            $('.menu-med-add').css('left', coordX - 10);
+            $('.menu-med-add').show();
+        } else {
+            $('.div-medico').css('float', 'right');
+            $('.div-funcao').css('float', 'right');
+            $('.menu-med-add').css('top', event.pageY - 20);
+            $('.menu-med-add').css('left', coordX - 650);
+            $('.menu-med-add').show();
+        }
         //Mouse em cima do medico associado
         $('#med-ass').mouseenter(function () {
             $('.add-medico').css('background', '#fff');
@@ -105,26 +123,8 @@ function acionaMenu(event, index, id) {
                 $('[name=m5]').prop('checked', false);
             }
         });
-
         //gridIndex é uma variável global
         //Recebe o index do grid atual
         gridIndex = index;
-
-        //Posiciona o menu de acordo com o botão acionado e o tamanho da tela
-        var tamTela = screen.width;
-        var coordX = event.pageX;
-        if (coordX < (tamTela / 2)) {
-            $('.div-medico').css('float', 'left');
-            $('.div-funcao').css('float', 'left');
-            $('.menu-med-add').css('top', event.pageY - 20);
-            $('.menu-med-add').css('left', coordX - 10);
-            $('.menu-med-add').show();
-        } else {
-            $('.div-medico').css('float', 'right');
-            $('.div-funcao').css('float', 'right');
-            $('.menu-med-add').css('top', event.pageY - 20);
-            $('.menu-med-add').css('left', coordX - 650);
-            $('.menu-med-add').show();
-        }
     }, 100);
 }
