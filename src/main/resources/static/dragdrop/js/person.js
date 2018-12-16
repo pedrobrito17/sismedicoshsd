@@ -90,12 +90,12 @@ function acionaMenu(event, index, id) {
         //     $('#list-med-cont').show();
         //     $('.div-funcao:visible').hide();
         // });
-        // //Mostra o div funcao do respectivo medico
-        // $('.med').click(function () {
-        //     $('.div-funcao:visible').hide();
-        //     let idFunc = $(this).attr('id') + "-func";
-        //     $('#' + idFunc).show();
-        // });
+        //Mostra o div funcao do respectivo medico
+        $('.med').click(function () {
+            $('.div-funcao:visible').hide();
+            let idFunc = $(this).attr('id') + "-func";
+            $('#' + idFunc).show();
+        });
         // //Altera a cor quando em cima da lista de medicos
         // $('.add-medico').mouseenter(function () {
         //     $('.add-medico').css('background', '#fff');
