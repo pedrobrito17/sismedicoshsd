@@ -63,7 +63,7 @@ function acionaMenu(event, index, id) {
             $('.menu-med-add').css('left', coordX - 10);
             $('.menu-med-add').show();
 
-            $('#list-med-ass').hide();
+            document.getElementById('list-med-ass').style.display = 'none';
             $('#list-med-cont').hide();
         } else {
             $('.div-medico').css('float', 'right');
@@ -72,7 +72,7 @@ function acionaMenu(event, index, id) {
             $('.menu-med-add').css('left', coordX - 650);
             $('.menu-med-add').show();
 
-            $('#list-med-ass').hide();
+            document.getElementById('list-med-ass').style.display = 'none';
             $('#list-med-cont').hide();
         }
 
