@@ -81,9 +81,9 @@ table{
 /* #list-med-ass{
     display: block;
 } */
-#list-med-cont{
+/* #list-med-cont{
     display: none;
-}
+} */
 
 .add-medico,.add-medico-ass,.add-medico-cont{
     padding: 5px;
