@@ -1,58 +1,58 @@
 <div th:fragment="listar-medicos-escala">
 
-      <div class="div-medico">
-        <div id="med-ass" class="add-medico-ass">Médicos associados</div>
-        <div id="med-cont" class="add-medico-cont">Médicos contratados</div>
-      </div>
-      <div id="list-med-ass" class="div-medico">
-        <p th:if="${#lists.isEmpty(listaMedSoc)}"><b>Nesta categoria não há medicos disponíveis</b></p>
-        <ul th:each="medSoc : ${listaMedSoc}">
-          <li class="add-medico med" th:attr="id=${medSoc.crm}" th:text="${medSoc.nome}"></li>
-        </ul>
-      </div>
-      <div id="list-med-cont" class="div-medico">
-      	<p th:if="${#lists.isEmpty(listaMedCont)}"><b>Nesta categoria não há medicos disponíveis</b></p>
-        <ul th:each="medCont : ${listaMedCont}">
-          <li class="add-medico med" th:attr="id=${medCont.crm}" th:text="${medCont.nome}"></li>
-        </ul>
-      </div>
+	<div class="div-medico">
+		<div id="med-ass" class="add-medico-ass">Médicos associados</div>
+		<div id="med-cont" class="add-medico-cont">Médicos contratados</div>
+	</div>
+	<div id="list-med-ass" class="div-medico">
+		<p th:if="${#lists.isEmpty(listaMedSoc)}"><b>Nesta categoria não há medicos disponíveis</b></p>
+		<ul th:each="medSoc : ${listaMedSoc}">
+			<li class="add-medico med" th:attr="id=${medSoc.crm}" th:text="${medSoc.nome}"></li>
+		</ul>
+	</div>
+	<div id="list-med-cont" class="div-medico">
+		<p th:if="${#lists.isEmpty(listaMedCont)}"><b>Nesta categoria não há medicos disponíveis</b></p>
+		<ul th:each="medCont : ${listaMedCont}">
+			<li class="add-medico med" th:attr="id=${medCont.crm}" th:text="${medCont.nome}"></li>
+		</ul>
+	</div>
 
 	<th:block th:each="medSoc : ${listaMedSoc}">
-	
+
 		<div th:attr="id=${medSoc.crm}+'-func'" class="div-funcao">
 			<h6 th:text="${medSoc.nome}"></h6>
-			
+
 			<div th:if="${!#lists.isEmpty(medSoc.funcoes)}" th:each="func : ${medSoc.funcoes}" class="checkbox-inline">
-				
+
 				<div th:attr="id=${medSoc.crm}+hro" th:if="${hro}==false">
-					<input type="checkbox" th:value="hro" th:if="${func.funcao}==HRO" name="hro" th:text="${func.funcao}"/>
+					<input type="checkbox" th:value="hro" th:if="${func.funcao}==HRO" name="hro" th:text="${func.funcao}" />
 				</div>
 				<div th:attr="id=${medSoc.crm}+m5" th:if="${m5}==false">
-					<input  type="checkbox" th:value="m5" th:if="${func.funcao}==M5" name="m5" th:text="${func.funcao}"/>	
+					<input type="checkbox" th:value="m5" th:if="${func.funcao}==M5" name="m5" th:text="${func.funcao}" />
 				</div>
-				
+
 			</div>
 			<button type="button" th:onclick="|adicionaItem('${medSoc.nome}','${medSoc.crm}')|" class="btn btn-success btn-sm">Adicionar</button>
 		</div>
-	</th:block>	  
-	
+	</th:block>
+
 	<th:block th:each="medCont : ${listaMedCont}">
-	
+
 		<div th:attr="id=${medCont.crm}+'-func'" class="div-funcao">
 			<h6 th:text="${medCont.nome}"></h6>
-			
+
 			<div th:if="${!#lists.isEmpty(medCont.funcoes)}" th:each="func : ${medCont.funcoes}" class="checkbox-inline">
-				
+
 				<div th:attr="id=${medCont.crm}+hro" th:if="${hro}==false">
-					<input type="checkbox" th:value="${medCont.crm}" th:if="${func.funcao}==HRO" name="hro" th:text="${func.funcao}"/>
+					<input type="checkbox" th:value="${medCont.crm}" th:if="${func.funcao}==HRO" name="hro" th:text="${func.funcao}" />
 				</div>
 				<div th:attr="id=${medCont.crm}+m5" th:if="${m5}==false">
-					<input  type="checkbox" th:value="${medCont.crm}" th:if="${func.funcao}==M5" name="m5" th:text="${func.funcao}"/>	
+					<input type="checkbox" th:value="${medCont.crm}" th:if="${func.funcao}==M5" name="m5" th:text="${func.funcao}" />
 				</div>
-				
+
 			</div>
 			<button type="button" th:onclick="|adicionaItem('${medCont.nome}','${medCont.crm}')|" class="btn btn-success btn-sm">Adicionar</button>
 		</div>
-	</th:block>	
+	</th:block>
 
 </div>
