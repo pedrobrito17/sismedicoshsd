@@ -77,14 +77,7 @@ function acionaMenu(event, index, id) {
         // $('#list-med-ass').show();
 
 
-        //Mouse em cima do medico associado
-        $('#med-ass').mouseenter(function () {
-            $('.add-medico').css('background', '#fff');
-            $('#list-med-cont').hide();
-            $('#list-med-ass').show();
-            $('.div-funcao:visible').hide();
-            console.log("Entrou medico associado"); //Testando
-        });
+
         //Mouse em cima do medico contratado
         $('#med-cont').mouseenter(function () {
             $('.add-medico').css('background', '#fff');
@@ -129,3 +122,12 @@ function acionaMenu(event, index, id) {
 
     }, 500);
 }
+
+        //Mouse em cima do medico associado
+        $('#med-ass').mouseenter(function () {
+            $('.add-medico').css('background', '#fff');
+            $('#list-med-cont').hide();
+            $('#list-med-ass').show();
+            $('.div-funcao:visible').hide();
+            console.log("Entrou medico associado"); //Testando
+        });
