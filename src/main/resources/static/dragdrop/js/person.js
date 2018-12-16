@@ -49,6 +49,7 @@ function acionaMenu(event, index, id) {
 
     //AJAX
     $('.menu-med-add').load(endereco + '/escaladragdrop/listamedicos/' + req);
+    console.log(endereco + '/escaladragdrop/listamedicos/' + req);
 
     //Após o tempo de 100 ms executa o código abaixo
     setTimeout(function () {
@@ -121,5 +122,5 @@ function acionaMenu(event, index, id) {
         //Recebe o index do grid atual
         gridIndex = index;
 
-    }, 100);
+    }, 500);
 }
