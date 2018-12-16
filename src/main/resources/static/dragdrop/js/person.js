@@ -83,6 +83,7 @@ function acionaMenu(event, index, id) {
             $('#list-med-cont').hide();
             $('#list-med-ass').show();
             $('.div-funcao:visible').hide();
+            console.log("Entrou medico associado"); //Testando
         });
         //Mouse em cima do medico contratado
         $('#med-cont').mouseenter(function () {
@@ -90,28 +91,29 @@ function acionaMenu(event, index, id) {
             $('#list-med-ass').hide();
             $('#list-med-cont').show();
             $('.div-funcao:visible').hide();
+            console.log("Entrou medico contratado"); //Testando
         });
-        //Mostra o div funcao do respectivo medico
-        $('.med').click(function () {
-            $('.div-funcao:visible').hide();
-            let idFunc = $(this).attr('id') + "-func";
-            $('#' + idFunc).show();
-        });
-        //Altera a cor quando em cima da lista de medicos
-        $('.add-medico').mouseenter(function () {
-            $('.add-medico').css('background', '#fff');
-            $(this).css('background', '#e0e0e0');
-        });
-        //Altera a cor quando em cima do medico associado
-        $('.add-medico-ass').mouseenter(function () {
-            $('.add-medico-cont').css('background', '#fff');
-            $(this).css('background', '#e0e0e0');
-        });
-        //Altera a cor quando em cima do medico contratado
-        $('.add-medico-cont').mouseenter(function () {
-            $('.add-medico-ass').css('background', '#fff');
-            $(this).css('background', '#e0e0e0');
-        });
+        // //Mostra o div funcao do respectivo medico
+        // $('.med').click(function () {
+        //     $('.div-funcao:visible').hide();
+        //     let idFunc = $(this).attr('id') + "-func";
+        //     $('#' + idFunc).show();
+        // });
+        // //Altera a cor quando em cima da lista de medicos
+        // $('.add-medico').mouseenter(function () {
+        //     $('.add-medico').css('background', '#fff');
+        //     $(this).css('background', '#e0e0e0');
+        // });
+        // //Altera a cor quando em cima do medico associado
+        // $('.add-medico-ass').mouseenter(function () {
+        //     $('.add-medico-cont').css('background', '#fff');
+        //     $(this).css('background', '#e0e0e0');
+        // });
+        // //Altera a cor quando em cima do medico contratado
+        // $('.add-medico-cont').mouseenter(function () {
+        //     $('.add-medico-ass').css('background', '#fff');
+        //     $(this).css('background', '#e0e0e0');
+        // });
         // //Altena os checkbox
         // $('[type=checkbox]').change(function () {
         //     let nome = $(this).attr('name');
