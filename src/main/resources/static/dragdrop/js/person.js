@@ -71,7 +71,7 @@ function acionaMenu(event, index, id) {
         }
 
 
-        $('#list-med-ass').show();
+        // $('#list-med-ass').show();
 
 
         // //Mouse em cima do medico associado

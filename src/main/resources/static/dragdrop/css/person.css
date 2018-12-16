@@ -78,9 +78,9 @@ table{
     margin: 5px;
 }
 
-#list-med-ass{
-    display: none;
-}
+/* #list-med-ass{
+    display: block;
+} */
 #list-med-cont{
     display: none;
 }
