@@ -49,7 +49,6 @@ function acionaMenu(event, index, id) {
 
     //AJAX
     $('.menu-med-add').load(endereco + '/escaladragdrop/listamedicos/' + req);
-    console.log(endereco + '/escaladragdrop/listamedicos/' + req);
 
     //Após o tempo de 100 ms executa o código abaixo
     setTimeout(function () {
@@ -62,14 +61,12 @@ function acionaMenu(event, index, id) {
             $('.menu-med-add').css('top', event.pageY - 20);
             $('.menu-med-add').css('left', coordX - 10);
             $('.menu-med-add').show();
-
         } else {
             $('.div-medico').css('float', 'right');
             $('.div-funcao').css('float', 'right');
             $('.menu-med-add').css('top', event.pageY - 20);
             $('.menu-med-add').css('left', coordX - 650);
             $('.menu-med-add').show();
-
         }
 
 
@@ -81,12 +78,12 @@ function acionaMenu(event, index, id) {
         //     $('.div-funcao:visible').hide();
         //     console.log("Entrou medico contratado"); //Testando
         // });
-        // //Mostra o div funcao do respectivo medico
-        // $('.med').click(function () {
-        //     $('.div-funcao:visible').hide();
-        //     let idFunc = $(this).attr('id') + "-func";
-        //     $('#' + idFunc).show();
-        // });
+        //Mostra o div funcao do respectivo medico
+        $('.med').click(function () {
+            $('.div-funcao:visible').hide();
+            let idFunc = $(this).attr('id') + "-func";
+            $('#' + idFunc).show();
+        });
         // //Altera a cor quando em cima da lista de medicos
         // $('.add-medico').mouseenter(function () {
         //     $('.add-medico').css('background', '#fff');
