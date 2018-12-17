@@ -125,9 +125,6 @@ function acionaMenu(event, index, id) {
 
     }, 100);
 
-
-}
-
     //Mouse em cima do medico associado
     $('#med-ass').mouseenter(function () {
         console.log("Entrou medico associado"); //Testando
@@ -136,5 +133,8 @@ function acionaMenu(event, index, id) {
         $('#list-med-ass').show();
         $('.div-funcao:visible').hide();
     });
+
+}
+
 
         
