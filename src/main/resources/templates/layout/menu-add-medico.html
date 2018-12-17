@@ -55,17 +55,26 @@
 		</div>
 	</th:block>
 
-	<script th:src="@{/dragdrop/js/jquery.min.js}"></script>
 	<script type="text/javascript">
-        //Mouse em cima do medico associado
-        $("#med-ass").mouseenter(function() {
-            console.log("Entrou medico associado"); //Testando
-            $(".add-medico").css("background", "#fff");
-            $("#list-med-cont").hide();
-            $("#list-med-ass").show();
-            $(".div-funcao:visible").hide();
-            console.log("Fim do medico associado");
-        });
+		//Mouse em cima do medico associado
+		$("#med-ass").mouseenter(function () {
+			console.log("Entrou medico associado"); //Testando
+			$(".add-medico").css("background", "#fff");
+			$("#list-med-cont").hide();
+			$("#list-med-ass").show();
+			$(".div-funcao:visible").hide();
+			console.log("Fim do medico associado");
+		});
+		//Altera a cor quando em cima do medico associado
+		$(".add-medico-ass").mouseenter(function () {
+			$(".add-medico-cont").css("background", "#fff");
+			$(this).css("background", "#e0e0e0");
+		});
+		//Altera a cor quando em cima do medico contratado
+		$(".add-medico-cont").mouseenter(function () {
+			$(".add-medico-ass").css("background", "#fff");
+			$(this).css("background", "#e0e0e0");
+		});
 	</script>
 
 </div>

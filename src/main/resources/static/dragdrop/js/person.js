@@ -89,16 +89,8 @@ function acionaMenu(event, index, id) {
         //     $(".add-medico").css("background", "#fff");
         //     $(this).css("background", "#e0e0e0");
         // });
-        // //Altera a cor quando em cima do medico associado
-        // $(".add-medico-ass").mouseenter(function () {
-        //     $(".add-medico-cont").css("background", "#fff");
-        //     $(this).css("background", "#e0e0e0");
-        // });
-        // //Altera a cor quando em cima do medico contratado
-        // $(".add-medico-cont").mouseenter(function () {
-        //     $(".add-medico-ass").css("background", "#fff");
-        //     $(this).css("background", "#e0e0e0");
-        // });
+
+        
         // //Altena os checkbox
         // $("[type=checkbox]").change(function () {
         //     let nome = $(this).attr("name");
