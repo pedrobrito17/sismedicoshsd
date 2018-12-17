@@ -8,7 +8,7 @@
       var header_sem = tabelas[cont].querySelectorAll('th');
       datas.forEach(element => {
 
-        var newElement = element.replace("00:00:00.000+00:00", "10:00:00.000+00:00");
+        var newElement = element.replace("00:00:00.000+00:00", "10:00:00.000+00:00"); //alterado o horário para converter a data corretamente, a seguir
         var data = new Date(newElement);
 
         var t = new Date("2019-01-01T10:00:00.000+00:00");
@@ -196,7 +196,8 @@
 
     function addMedicoSemFuncao() {
       medsEscalados.forEach(med => {
-        let dataMed = new Date(med.data);
+        let newData = med.data.replace("00:00:00.000+00:00", "10:00:00.000+00:00"); //alterado o horário para converter a data corretamente, a seguir
+        let dataMed = new Date(newData);
         let dataReq = dataMed.getDate();
         let turnoMed = med.turno;
         let classe = 'item-content';
