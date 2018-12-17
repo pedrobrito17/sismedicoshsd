@@ -9,7 +9,7 @@
       datas.forEach(element => {
         var data = new Date(element);
 
-        var t = new Date("2019-01-01");
+        var t = new Date("2019-01-01T10:00:00.000+00:00");
         console.log(t.getDate());
 
         addHeader(data, header_sem);
