@@ -56,6 +56,25 @@
 	</th:block>
 
 	<script type="text/javascript">
+		setTimeout(function () {
+			//Posiciona o menu de acordo com o botão acionado e o tamanho da tela
+			var tamTela = screen.width;
+			var coordX = event.pageX;
+			if (coordX < (tamTela / 2)) {
+				$(".div-medico").css("float", "left");
+				$(".div-funcao").css("float", "left");
+				$(".menu-med-add").css("top", event.pageY - 20);
+				$(".menu-med-add").css("left", coordX - 10);
+				$(".menu-med-add").show();
+			} else {
+				$(".div-medico").css("float", "right");
+				$(".div-funcao").css("float", "right");
+				$(".menu-med-add").css("top", event.pageY - 20);
+				$(".menu-med-add").css("left", coordX - 650);
+				$(".menu-med-add").show();
+			}
+		}, 200);
+
 		//Mouse em cima do medico associado
 		$("#med-ass").mouseenter(function () {
 			$(".add-medico").css("background", "#fff");
@@ -69,7 +88,6 @@
 			$("#list-med-ass").hide();
 			$("#list-med-cont").show();
 			$(".div-funcao:visible").hide();
-			console.log("Entrou medico contratado"); //Testando
 		});
 		//Altera a cor quando em cima do medico associado
 		$(".add-medico-ass").mouseenter(function () {
