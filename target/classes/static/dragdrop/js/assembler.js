@@ -7,7 +7,9 @@
     function DiasDatasSemanas(cont) {
       var header_sem = tabelas[cont].querySelectorAll('th');
       datas.forEach(element => {
-        var data = new Date(element);
+
+        var newElement = element.replace("00:00:00.000+00:00", "10:00:00.000+00:00");
+        var data = new Date(newElement);
 
         var t = new Date("2019-01-01T10:00:00.000+00:00");
         console.log(t.getDate());
