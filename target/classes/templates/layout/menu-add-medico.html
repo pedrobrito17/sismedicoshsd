@@ -59,7 +59,7 @@
 		setTimeout(function () {
 			//Posiciona o menu de acordo com o botão acionado e o tamanho da tela
 			var tamTela = screen.width;
-			var coordX = event.pageX;
+			var coordX = eventGlobal.pageX;
 			if (coordX < (tamTela / 2)) {
 				$(".div-medico").css("float", "left");
 				$(".div-funcao").css("float", "left");

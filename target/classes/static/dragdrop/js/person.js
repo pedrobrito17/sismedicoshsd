@@ -47,11 +47,13 @@ function acionaMenu(event, index, id) {
         }
     }
 
+    //eventGlobal é uma variável global
+    //Recebe o evento clicado
+    eventGlobal = event;
+
     //AJAX
     //Carrega o menu na página
     $(".menu-med-add").load(endereco + "/escaladragdrop/listamedicos/" + req);
-
-    
 
     //gridIndex é uma variável global
     //Recebe o index do grid atual
