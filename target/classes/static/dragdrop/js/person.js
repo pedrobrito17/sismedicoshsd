@@ -112,15 +112,21 @@ function acionaMenu(event, index, id) {
         //Recebe o index do grid atual
         gridIndex = index;
         
-        //Mouse em cima do medico associado
-        $("#med-ass").mouseenter(function() {
-            console.log("Entrou medico associado"); //Testando
-            $(".add-medico").css("background", "#fff");
-            $("#list-med-cont").hide();
-            $("#list-med-ass").show();
-            $(".div-funcao:visible").hide();
-            console.log("Fim do medico associado");
+        // //Mouse em cima do medico associado
+        // $("#med-ass").mouseenter(function() {
+        //     console.log("Entrou medico associado"); //Testando
+        //     $(".add-medico").css("background", "#fff");
+        //     $("#list-med-cont").hide();
+        //     $("#list-med-ass").show();
+        //     $(".div-funcao:visible").hide();
+        //     console.log("Fim do medico associado");
+        // });
+
+        document.getElementById("med-ass").addEventListener("mouseenter", function(){
+            document.getElementById("list-med-ass").style.display = "none";
+            console.log("feito");
         });
+
 
     }, 200);
 
