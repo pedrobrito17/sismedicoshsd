@@ -79,7 +79,7 @@ table{
 }
 
 #list-med-ass{
-    display: block;
+    display: none;
 }
 #list-med-cont{
     display: none;
