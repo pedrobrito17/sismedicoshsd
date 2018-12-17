@@ -81,8 +81,8 @@ function adicionaItem(nome, crm) {
   var value = crm + '/' + turnoDoClick + '/' + diaDoClick;
 
   //recupera o day desta data onde foi clicado para adicionar o médico
-  var dayClick = new Date(year, month, diaDoClick).getDay();
-  console.log(dayClick);
+  var dayClick = new Date(year, month, diaDoClick, 10, 00, 00).getDay();
+
   //chama o ajax 
   $.ajax({
       type: 'POST',
