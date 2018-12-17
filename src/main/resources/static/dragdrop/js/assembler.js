@@ -85,7 +85,8 @@
       let tarde = document.querySelectorAll('.tarde');
       let noite = document.querySelectorAll('.noite');
       datas.forEach(element => {
-        var data = new Date(element);
+        var newData = element.replace("00:00:00.000+00:00", "10:00:00.000+00:00"); //alterado o horário para converter a data corretamente, a seguir
+        var data = new Date(newData);
         manha[data.getDate() - 1].id = 'm' + data.getDate();
         tarde[data.getDate() - 1].id = 't' + data.getDate();
         noite[data.getDate() - 1].id = 'n' + data.getDate();
