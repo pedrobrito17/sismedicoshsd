@@ -56,10 +56,15 @@
 	</th:block>
 
 	<script type="text/javascript">
-		document.getElementById("med-ass").addEventListener("mouseenter", function () {
-			document.getElementById("list-med-ass").style.display = "none";
-			console.log("feito");
-		});
+        //Mouse em cima do medico associado
+        $("#med-ass").mouseenter(function() {
+            console.log("Entrou medico associado"); //Testando
+            $(".add-medico").css("background", "#fff");
+            $("#list-med-cont").hide();
+            $("#list-med-ass").show();
+            $(".div-funcao:visible").hide();
+            console.log("Fim do medico associado");
+        });
 	</script>
 
 </div>
