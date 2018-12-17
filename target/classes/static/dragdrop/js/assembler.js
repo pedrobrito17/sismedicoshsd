@@ -9,7 +9,7 @@
       datas.forEach(element => {
         var data = new Date(element);
 
-        console.log(data.getDate()+"/"+data.getMonth()+"/"+data.getFullYear());
+        console.log(new Date("2019-01-01"));
 
         addHeader(data, header_sem);
         if (data.getDay() == 6 && data.getDate()) {
