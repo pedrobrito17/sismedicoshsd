@@ -78,12 +78,12 @@ function acionaMenu(event, index, id) {
         //     $(".div-funcao:visible").hide();
         //     console.log("Entrou medico contratado"); //Testando
         // });
-        //Mostra o div funcao do respectivo medico
-        $(".med").click(function () {
-            $(".div-funcao:visible").hide();
-            let idFunc = $(this).attr("id") + "-func";
-            $("#" + idFunc).show();
-        });
+        // //Mostra o div funcao do respectivo medico
+        // $(".med").click(function () {
+        //     $(".div-funcao:visible").hide();
+        //     let idFunc = $(this).attr("id") + "-func";
+        //     $("#" + idFunc).show();
+        // });
         // //Altera a cor quando em cima da lista de medicos
         // $(".add-medico").mouseenter(function () {
         //     $(".add-medico").css("background", "#fff");
@@ -122,13 +122,10 @@ function acionaMenu(event, index, id) {
         //     console.log("Fim do medico associado");
         // });
 
-        document.getElementById("med-ass").addEventListener("mouseenter", function(){
-            document.getElementById("list-med-ass").style.display = "none";
-            console.log("feito");
-        });
 
 
-    }, 200);
+
+    }, 100);
 
 
 }
