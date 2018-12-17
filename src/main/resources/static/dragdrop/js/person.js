@@ -63,8 +63,6 @@ function acionaMenu(event, index, id) {
             $('.menu-med-add').css('left', coordX - 10);
             $('.menu-med-add').show();
 
-            document.getElementById('list-med-ass').style.display = 'none';
-            $('#list-med-cont').hide();
         } else {
             $('.div-medico').css('float', 'right');
             $('.div-funcao').css('float', 'right');
@@ -72,13 +70,7 @@ function acionaMenu(event, index, id) {
             $('.menu-med-add').css('left', coordX - 650);
             $('.menu-med-add').show();
 
-            document.getElementById('list-med-ass').style.display = 'none';
-            $('#list-med-cont').hide();
         }
-
-
-        // $('#list-med-ass').show();
-
 
 
         // //Mouse em cima do medico contratado
@@ -122,17 +114,19 @@ function acionaMenu(event, index, id) {
         //gridIndex é uma variável global
         //Recebe o index do grid atual
         gridIndex = index;
+        
+        //Mouse em cima do medico associado
+        $('#med-ass').mouseenter(function () {
+            console.log("Entrou medico associado"); //Testando
+            $('.add-medico').css('background', '#fff');
+            $('#list-med-cont').hide();
+            $('#list-med-ass').show();
+            $('.div-funcao:visible').hide();
+            console.log("Fim do medico associado");
+        });
 
-    }, 100);
+    }, 200);
 
-    //Mouse em cima do medico associado
-    $('#med-ass').mouseenter(function () {
-        console.log("Entrou medico associado"); //Testando
-        $('.add-medico').css('background', '#fff');
-        $('#list-med-cont').hide();
-        $('#list-med-ass').show();
-        $('.div-funcao:visible').hide();
-    });
 
 }
 
