@@ -273,7 +273,7 @@ public class ControllerDragDrop {
 	/* =========================== UTILS =========================== */
 	public ArrayList<Date> getDatas(int mes, int ano){
 		ArrayList<Date> datas = new ArrayList<Date>();
-		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date d = null;
 		Calendar c = new GregorianCalendar();
 		
@@ -282,7 +282,7 @@ public class ControllerDragDrop {
 		c.set(GregorianCalendar.DAY_OF_MONTH, 2);
 		try {
 			for(int i = 1 ; i < c.getActualMaximum(GregorianCalendar.DAY_OF_MONTH)+1 ; i++){
-				d = dt.parse(i+"/0"+mes+"/"+ano);
+				d = dt.parse(i+"/0"+mes+"/"+ano+" 10:00:00");
 				datas.add(d);
 			}
 		} catch (ParseException e) {

@@ -139,8 +139,7 @@
     medsEscalados = /*[[${medicosEscalados}]]*/ "m";
     feriados = /*[[${feriados}]]*/ "n";
 
-    var newData = datas[0].replace("00:00:00.000+00:00", "10:00:00.000+00:00"); //alterado o horário para converter a data corretamente, a seguir
-    var data = new Date(newData);
+    var data = new Date(data[0]);
     month = data.getMonth();
     year = data.getFullYear();
 
