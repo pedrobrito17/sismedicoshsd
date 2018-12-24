@@ -7,85 +7,91 @@
   <title>Escala</title>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="icon" th:href="@{/images/medical-icon.ico}" type="image/ico" />
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/loading.css}" />
   <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/bootstrap.min.css}" />
   <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/kanban.css}" />
   <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/person.css}" />
 </head>
 
-<body>
-  <div class="divUm float-left">
-    <h6 class="h6-custom" style="margin: 0px;" th:text="${tituloEscala}"></h6>
-  </div>
-  <button type="button" class="btn btn-sm btn-info float-right" onclick="abrirPaginaPDF()">Gerar PDF</button>
-  <button class="btn-flutuante" onclick="chamarModal()"></button>
+<body onload="loading()">
+  <div id="loader"></div>
 
-  <!--Será inserido via Ajax o modal do relatorio -->
-  <div class="modal fade" id="modalRelatorio" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-body" id="modalbody">
+  <section style="display:none;" id="myDiv" class="animate-bottom">
+    <div class="divUm float-left">
+      <h6 class="h6-custom" style="margin: 0px;" th:text="${tituloEscala}"></h6>
+    </div>
+    <button type="button" class="btn btn-sm btn-info float-right" onclick="abrirPaginaPDF()">Gerar PDF</button>
+    <button class="btn-flutuante" onclick="chamarModal()"></button>
 
+    <!--Será inserido via Ajax o modal do relatorio -->
+    <div class="modal fade" id="modalRelatorio" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body" id="modalbody">
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <table th:each="contSem : ${qtdsem}" class="table table-bordered table-sm">
-    <thead class="thead-light">
-      <tr>
-        <th id="id-turno" scope="col" class="text-center">#</th>
-        <th scope="col">Domingo</th>
-        <th scope="col">Segunda</th>
-        <th scope="col">Terça</th>
-        <th scope="col">Quarta</th>
-        <th scope="col">Quinta</th>
-        <th scope="col">Sexta</th>
-        <th scope="col">Sábado</th>
-      </tr>
-    </thead>
-    <tbody>
+    <table th:each="contSem : ${qtdsem}" class="table table-bordered table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th id="id-turno" scope="col" class="text-center">#</th>
+          <th scope="col">Domingo</th>
+          <th scope="col">Segunda</th>
+          <th scope="col">Terça</th>
+          <th scope="col">Quarta</th>
+          <th scope="col">Quinta</th>
+          <th scope="col">Sexta</th>
+          <th scope="col">Sábado</th>
+        </tr>
+      </thead>
+      <tbody>
 
-      <!-- Manhã -->
-      <th scope="row" class="align-middle text-center">Manhã</th>
-      <tr:block th:each="q : ${qtd}">
-        <td class="manha">
-          <a><img th:src="@{/dragdrop/img/remove.png}" class="btn-remove"></a>
-          <a><img th:src="@{/dragdrop/img/add.png}" class="btn-add"><a>
-              <div class="grid">
-
-              </div>
-        </td>
-      </tr:block>
-      <tr></tr>
-
-      <!-- TARDE -->
-      <th scope="row" class="align-middle text-center">Tarde</th>
-      <tr:block th:each="q : ${qtd}">
-        <td class="tarde">
-          <a><img th:src="@{/dragdrop/img/remove.png}" class="btn-remove"></a>
-          <a><img th:src="@{/dragdrop/img/add.png}" class="btn-add"><a>
-              <div class="grid">
-              </div>
-        </td>
-      </tr:block>
-      <tr></tr>
-
-      <!-- Noite -->
-      <tr>
-        <th scope="row" class="align-middle text-center">Noite</th>
+        <!-- Manhã -->
+        <th scope="row" class="align-middle text-center">Manhã</th>
         <tr:block th:each="q : ${qtd}">
-          <td class="noite">
+          <td class="manha">
+            <a><img th:src="@{/dragdrop/img/remove.png}" class="btn-remove"></a>
+            <a><img th:src="@{/dragdrop/img/add.png}" class="btn-add"><a>
+                <div class="grid">
+
+                </div>
+          </td>
+        </tr:block>
+        <tr></tr>
+
+        <!-- TARDE -->
+        <th scope="row" class="align-middle text-center">Tarde</th>
+        <tr:block th:each="q : ${qtd}">
+          <td class="tarde">
             <a><img th:src="@{/dragdrop/img/remove.png}" class="btn-remove"></a>
             <a><img th:src="@{/dragdrop/img/add.png}" class="btn-add"><a>
                 <div class="grid">
                 </div>
           </td>
         </tr:block>
-      </tr>
-    </tbody>
-  </table>
-  <div style="color: red; margin-bottom: 400px;" id="feriados"></div>
+        <tr></tr>
 
+        <!-- Noite -->
+        <tr>
+          <th scope="row" class="align-middle text-center">Noite</th>
+          <tr:block th:each="q : ${qtd}">
+            <td class="noite">
+              <a><img th:src="@{/dragdrop/img/remove.png}" class="btn-remove"></a>
+              <a><img th:src="@{/dragdrop/img/add.png}" class="btn-add"><a>
+                  <div class="grid">
+                  </div>
+            </td>
+          </tr:block>
+        </tr>
+      </tbody>
+    </table>
+    <div style="color: red; margin-bottom: 400px;" id="feriados"></div>
+  </section>
+
+  <script th:src="@{/dragdrop/js/loading.js}"></script>
   <script th:src="@{/dragdrop/js/jquery.min.js}"></script>
 
   <!-- Menu para adicionar os medicos -->
@@ -94,7 +100,7 @@
   </script>
   <div class="menu-med-add">
   </div>
-  
+
   <script type="text/javascript">
     var endereco = "https://sismedhsd.herokuapp.com/hsdmedicos";
     // var endereco = "http://localhost:8080/hsdmedicos";
