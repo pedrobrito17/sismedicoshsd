@@ -7,10 +7,10 @@
   <title>Escala</title>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="icon" th:href="@{/images/medical-icon.ico}" type="image/ico" />
-  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/loading.css}" />
   <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/bootstrap.min.css}" />
   <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/kanban.css}" />
   <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/person.css}" />
+  <link rel="stylesheet" type="text/css" media="screen" th:href="@{/dragdrop/css/loading.css}" />
 </head>
 
 <body onload="loading()">
@@ -101,8 +101,8 @@
   </div>
 
   <script type="text/javascript">
-    var endereco = "https://sismedhsd.herokuapp.com/hsdmedicos";
-    // var endereco = "http://localhost:8080/hsdmedicos";
+    // var endereco = "https://sismedhsd.herokuapp.com/hsdmedicos";
+    var endereco = "http://localhost:8080/hsdmedicos";
 
     function abrirPaginaPDF() {
       var win = window.open(
@@ -144,7 +144,7 @@
     medsEscalados = /*[[${medicosEscalados}]]*/ "m";
     feriados = /*[[${feriados}]]*/ "n";
 
-    var data = new Date(data[0]);
+    var data = new Date(datas[0]);
     month = data.getMonth();
     year = data.getFullYear();
 
