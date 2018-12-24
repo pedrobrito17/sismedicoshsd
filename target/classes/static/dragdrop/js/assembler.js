@@ -118,7 +118,8 @@
 
     function addMedicoM5() {
       medsM5.forEach(med => {
-        let dataMed = new Date(med.data);
+        let novaData = med.data.replace("00:00:00","12:22:11");
+        let dataMed = new Date(novaData);
         let dataReq = dataMed.getDate();
         let turnoMed = med.turno;
         let classe = 'item-content';
@@ -155,7 +156,8 @@
 
     function addMedicoHro() {
       medsHro.forEach(med => {
-        let dataMed = new Date(med.data);
+        let novaData = med.data.replace("00:00:00","12:22:11");
+        let dataMed = new Date(novaData);
         let dataReq = dataMed.getDate();
         let turnoMed = med.turno;
         let classe = 'item-content';
@@ -192,7 +194,8 @@
 
     function addMedicoSemFuncao() {
       medsEscalados.forEach(med => {
-        let dataMed = new Date(med.data);
+        let novaData = med.data.replace("00:00:00","12:22:11");
+        let dataMed = new Date(novaData);
         let dataReq = dataMed.getDate();
         let turnoMed = med.turno;
         let classe = 'item-content';

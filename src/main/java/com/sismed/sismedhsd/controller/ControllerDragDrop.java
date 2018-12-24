@@ -282,7 +282,7 @@ public class ControllerDragDrop {
 		c.set(GregorianCalendar.DAY_OF_MONTH, 2);
 		try {
 			for(int i = 1 ; i < c.getActualMaximum(GregorianCalendar.DAY_OF_MONTH)+1 ; i++){
-				d = dt.parse(i+"/0"+mes+"/"+ano+" 10:00:00");
+				d = dt.parse(i+"/0"+mes+"/"+ano+" 12:22:00");
 				datas.add(d);
 			}
 		} catch (ParseException e) {
