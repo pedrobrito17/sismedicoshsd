@@ -102,7 +102,10 @@
 
   <script type="text/javascript">
     // var endereco = "https://sismedhsd.herokuapp.com/hsdmedicos";
-    var endereco = "http://localhost:8080/hsdmedicos";
+    var name_artefato_tomcat = 'hsdmedicos';
+    var endereco_tomcat = "http://localhost:8080/"+name_artefato_tomcat+"/hsdmedicos";
+    var endereco_local = "http://localhost:8080/hsdmedicos";
+    var endereco = endereco_tomcat;
 
     function abrirPaginaPDF() {
       var win = window.open(
@@ -141,6 +144,7 @@
     datas = /*[[${datas}]]*/ "d";
     medsM5 = /*[[${escalaM5}]]*/ "e";
     medsHro = /*[[${escalaHro}]]*/ "h";
+    medsEda = /*[[${escalaEda}]]*/ "a";
     medsEscalados = /*[[${medicosEscalados}]]*/ "m";
     feriados = /*[[${feriados}]]*/ "n";
 

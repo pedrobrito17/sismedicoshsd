@@ -83,8 +83,16 @@ public class MedicoService {
 		int crmHro = 0;
 		try{
 			crmHro = escalas.getMedicoHro(dia, mes, ano, turno);
-		}catch(AopInvocationException e){ //Se não houver medico M5 ou Hro salvo para o turno e data selecionado é retornado null para o inteiro
+		}catch(AopInvocationException e){ //Se não houver medico M5, Hro ou EDA salvo para o turno e data selecionado é retornado null para o inteiro
 			System.out.println("Não há medicos HRO");
+		}
+
+		//Exclui os médicos salvos como Eda
+		int crmEda = 0;
+		try{
+			crmEda = escalas.getMedicoEda(dia, mes, ano, turno);
+		}catch(AopInvocationException e){ //Se não houver medico M5, Hro ou EDA salvo para o turno e data selecionado é retornado null para o inteiro
+			System.out.println("Não há medicos EDA");
 		}
 		
 		//Exclui os médicos salvos como M5
@@ -97,6 +105,7 @@ public class MedicoService {
 		
 		medicosParaEscala.remove(medicos.findOne(crmM5));
 		medicosParaEscala.remove(medicos.findOne(crmHro));
+		medicosParaEscala.remove(medicos.findOne(crmEda));
 		
 		return medicosParaEscala;
 	}

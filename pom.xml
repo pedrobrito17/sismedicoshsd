@@ -9,9 +9,11 @@
   </parent>
   <groupId>com.sismed</groupId>
   <artifactId>sismedhsd</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>demo</name>
-  <description>Demo project for Spring Boot</description>
+  <version>2.0</version>
+  <name>sismedhsd</name>
+  <description>Sistema de Gerenciamento das Escalas dos Médicos Anestesistas do Hospital São Domingos</description>
+  <packaging>war</packaging>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -20,6 +22,7 @@
     <thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
     <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
   </properties>
+  
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>

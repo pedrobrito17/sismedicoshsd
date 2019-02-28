@@ -189,6 +189,44 @@
       });
     }
 
+    //Insere os medicos HRO em cada celula
+    addMedicoEda();
+
+    function addMedicoEda() {
+      medsEda.forEach(med => {
+        let novaData = med.data.replace("00:00:00","12:22:11");
+        let dataMed = new Date(novaData);
+        let dataReq = dataMed.getDate();
+        let turnoMed = med.turno;
+        let classe = 'item-content';
+
+        if (dataMed.getDay() == 0 || dataMed.getDay() == 6) {
+          classe = 'item-content feriado';
+        }
+
+        switch (turnoMed) {
+          case 'manha':
+            $('#m' + dataMed.getDate()).find('.grid').append(
+              '<div class="item"><div class="' + classe + '"><span value=' + med.id + '/' + turnoMed + '/' +
+              dataReq + '>' + med.nome + " EDA" +
+              '</span></div></div>');
+            break;
+          case 'tarde':
+            $('#t' + dataMed.getDate()).find('.grid').append(
+              '<div class="item"><div class="tardeItem ' + classe + '"><span value=' + med.id + '/' + turnoMed + '/' +
+              dataReq + '>' + med.nome + " EDA" +
+              '</span></div></div>');
+            break;
+          case 'noite':
+            $('#n' + dataMed.getDate()).find('.grid').append(
+              '<div class="item"><div class="noiteItem ' + classe + '"><span value=' + med.id + '/' + turnoMed + '/' +
+              dataReq + '>' + med.nome + " EDA" +
+              '</span></div></div>');
+            break;
+        }
+      });
+    }
+
     //Insere os medicos sem função em cada celula
     addMedicoSemFuncao();
 

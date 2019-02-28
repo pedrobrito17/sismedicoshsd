@@ -75,6 +75,7 @@ public class ControllerDragDrop {
 		try {
 			mv.addObject("escalaM5", escalaService.getEscalasComM5Salvos(session.getMes() , session.getAno()));
 			mv.addObject("escalaHro", escalaService.getEscalasComHroSalvos(session.getMes() , session.getAno()));
+			mv.addObject("escalaEda", escalaService.getEscalasComEdaSalvos(session.getMes() , session.getAno()));
 			mv.addObject("medicosEscalados", escalaService.buscarMedicosEscaladosNoMes(session.getMes() , session.getAno()));
 			mv.addObject("feriados", feriadoService.getFeriadosDoMesAno(session.getMes(), session.getAno()));
 		} catch (ParseException e) {
@@ -97,6 +98,7 @@ public class ControllerDragDrop {
 		try {
 			mv.addObject("escalaM5", escalaService.getEscalasComM5Salvos(session.getMes() , session.getAno()));
 			mv.addObject("escalaHro", escalaService.getEscalasComHroSalvos(session.getMes() , session.getAno()));
+			mv.addObject("escalaEda", escalaService.getEscalasComEdaSalvos(session.getMes() , session.getAno()));
 			mv.addObject("medicosEscalados", escalaService.buscarMedicosEscaladosNoMes(session.getMes() , session.getAno()));
 			mv.addObject("feriados", feriadoService.getFeriadosDoMesAno(session.getMes(), session.getAno()));
 		} catch (ParseException e) {
@@ -171,8 +173,10 @@ public class ControllerDragDrop {
 		//Verifica se a escala possui M5 e HRO
 		boolean m5 = escalaService.getM5ParaDataETurno(turno, data);
 		boolean hro = escalaService.getHroParaDataETurno(turno, data);
+		boolean eda = escalaService.getEdaParaDataETurno(turno, data);
 		model.addAttribute("m5", m5);
 		model.addAttribute("hro", hro);
+		model.addAttribute("eda", eda);
 		
 		return "layout/menu-add-medico :: listar-medicos-escala";
 	}
@@ -203,6 +207,10 @@ public class ControllerDragDrop {
 				escalaSalva.setMedicoM5(medico);
 				escalaService.salvarMedicoEscala(escalaSalva);
 			}
+			else if(funcao.equals("eda")){
+				escalaSalva.setMedicoEda(medico);
+				escalaService.salvarMedicoEscala(escalaSalva);
+			}
 			else{
 				Ordem ordem = new Ordem();
 				ordem.setEscala(escalaSalva);
@@ -220,6 +228,10 @@ public class ControllerDragDrop {
 			}
 			else if(funcao.equals("m5")){
 				escala.setMedicoM5(medico);
+				escalaService.salvarMedicoEscala(escala);
+			}
+			else if(funcao.equals("eda")){
+				escala.setMedicoEda(medico);
 				escalaService.salvarMedicoEscala(escala);
 			}
 			else{

@@ -33,11 +33,21 @@ public interface Escalas extends JpaRepository<Escala, Integer>{
 			+ "year(c.data) = :ano AND c.turno = :turno", nativeQuery=true)
 	List<Object> buscarHRODaEscala(@Param("dia") int dia, @Param("mes") int mes, 
 			@Param("ano") int ano, @Param("turno") String turno);
+
+	@Query(value="SELECT medico_eda_crm from escala c WHERE day(c.data) = :dia AND month(c.data) = :mes AND "
+			+ "year(c.data) = :ano AND c.turno = :turno", nativeQuery=true)
+	List<Object> buscarEDADaEscala(@Param("dia") int dia, @Param("mes") int mes, 
+			@Param("ano") int ano, @Param("turno") String turno);
 	
 	@Query(value="SELECT a.crm, a.nome,c.turno,c.data FROM escala c "
 			+"INNER JOIN medico a ON a.crm = c.medico_hro_crm "
 			+ "WHERE month(c.data) = :mes AND year(c.data) = :ano", nativeQuery=true)
 	List<Object> getEscalaByTurnoAndDataAndHro(@Param("mes") int mes, @Param("ano") int ano);
+
+	@Query(value="SELECT a.crm, a.nome,c.turno,c.data FROM escala c "
+			+"INNER JOIN medico a ON a.crm = c.medico_eda_crm "
+			+ "WHERE month(c.data) = :mes AND year(c.data) = :ano", nativeQuery=true)
+	List<Object> getEscalaByTurnoAndDataAndEda(@Param("mes") int mes, @Param("ano") int ano);
 	
 	@Query(value="SELECT a.crm, a.nome,c.turno,c.data FROM escala c "
 			+"INNER JOIN medico a ON a.crm = c.medicom5_crm "
@@ -56,6 +66,12 @@ public interface Escalas extends JpaRepository<Escala, Integer>{
 			+"INNER JOIN escala c ON a.crm = c.medico_hro_crm "
 			+ "WHERE day(c.data) = :dia AND month(c.data) = :mes AND year(c.data) = :ano AND c.turno = :turno", nativeQuery=true)
 	int getMedicoHro(@Param("dia") int dia, @Param("mes") int mes, 
+			@Param("ano") int ano, @Param("turno") String turno);
+
+	@Query(value="SELECT a.crm FROM medico a "
+			+"INNER JOIN escala c ON a.crm = c.medico_eda_crm "
+			+ "WHERE day(c.data) = :dia AND month(c.data) = :mes AND year(c.data) = :ano AND c.turno = :turno", nativeQuery=true)
+	int getMedicoEda(@Param("dia") int dia, @Param("mes") int mes, 
 			@Param("ano") int ano, @Param("turno") String turno);
 
 	@Query(value = "SELECT a.nome FROM medico a INNER JOIN escala b INNER JOIN ordem c ON "

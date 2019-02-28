@@ -87,7 +87,8 @@ public interface Relatorios extends JpaRepository<Escala, Integer> {
 	public List<Object> getContagemServicoSemanal(@Param("data_1") Date data_1, @Param("data_2") Date data_2);
 
 	
-	@Query(value="select count(a.nome), a.nome, a.crm from medico a INNER JOIN escala b ON (a.crm = b.medico_hro_crm OR a.crm = b.medicom5_crm) WHERE "
+	@Query(value="select count(a.nome), a.nome, a.crm from medico a INNER JOIN escala b ON (a.crm = b.medico_hro_crm OR a.crm = b.medicom5_crm "
+			+"OR a.crm = b.medico_eda_crm) WHERE "
 			+ "b.data BETWEEN :data AND :data2 group by a.crm;", nativeQuery=true)
 	public List<Object> getContagemServicoSemanaHRo(@Param("data") Date data, @Param("data2") Date data2);
 

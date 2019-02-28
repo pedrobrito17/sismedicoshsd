@@ -79,6 +79,24 @@ public class EscalaService {
 		return false;
 	}
 
+	public boolean getEdaParaDataETurno(String turno, Date data) {
+		GregorianCalendar gc = new GregorianCalendar();
+		gc.setTime(data);
+		int dia = gc.get(Calendar.DATE);
+		int mes = gc.get(Calendar.MONTH)+1;
+		int ano = gc.get(Calendar.YEAR);
+				
+		List<Object> hro = escalas.buscarEDADaEscala(dia, mes, ano, turno);
+		
+		Iterator<Object> it = hro.iterator();
+		while(it.hasNext()){
+			if(it.next()!=null){
+				return true;
+			}			
+		}
+		return false;
+	}
+
 	public Escala buscarEscalaPorId(Integer id) {
 		return escalas.findOne(id);
 	}
@@ -94,6 +112,14 @@ public class EscalaService {
 		
 	}
 
+	public List<EscalaView> getEscalasComEdaSalvos(int mes, int ano) throws ParseException {
+
+		return new EscalaView().getLista(escalas.getEscalaByTurnoAndDataAndEda(mes, ano));
+		
+	}
+
+
+
 	@Transactional
 	public void removerMedicoDaEscala(Integer crmMedico, int idEscala) {
 		Medico medico = medicos.findOne(crmMedico);
@@ -105,6 +131,9 @@ public class EscalaService {
 		}
 		else if(medico == escala.getMedicoM5()){
 			escala.setMedicoM5(null);
+			escalas.save(escala);
+		}else if(medico == escala.getMedicoEda()){
+			escala.setMedicoEda(null);
 			escalas.save(escala);
 		}else{
 			

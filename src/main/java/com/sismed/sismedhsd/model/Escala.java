@@ -35,6 +35,9 @@ public class Escala implements Serializable{
 	@OneToOne
 	private Medico medicoM5;
 
+	@OneToOne
+	private Medico medicoEda;
+
 	public Integer getId() {
 		return id;
 	}
@@ -73,6 +76,14 @@ public class Escala implements Serializable{
 
 	public void setMedicoM5(Medico medicoM5) {
 		this.medicoM5 = medicoM5;
+	}
+
+	public Medico getMedicoEda(){
+		return medicoEda;
+	}
+
+	public void setMedicoEda(Medico medicoEda){
+		this.medicoEda = medicoEda;
 	}
 	
 }

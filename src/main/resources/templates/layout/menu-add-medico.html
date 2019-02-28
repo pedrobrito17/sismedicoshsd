@@ -30,6 +30,9 @@
 				<div th:attr="id=${medSoc.crm}+m5" th:if="${m5}==false">
 					<input type="checkbox" th:value="m5" th:if="${func.funcao}==M5" name="m5" th:text="${func.funcao}" />
 				</div>
+				<div th:attr="id=${medSoc.crm}+eda" th:if="${eda}==false">
+					<input type="checkbox" th:value="eda" th:if="${func.funcao}==EDA" name="eda" th:text="${func.funcao}" />
+				</div>
 
 			</div>
 			<button type="button" th:onclick="|adicionaItem('${medSoc.nome}','${medSoc.crm}')|" class="btn btn-success btn-sm">Adicionar</button>
@@ -48,6 +51,9 @@
 				</div>
 				<div th:attr="id=${medCont.crm}+m5" th:if="${m5}==false">
 					<input type="checkbox" th:value="${medCont.crm}" th:if="${func.funcao}==M5" name="m5" th:text="${func.funcao}" />
+				</div>
+				<div th:attr="id=${medCont.crm}+eda" th:if="${eda}==false">
+					<input type="checkbox" th:value="${medCont.crm}" th:if="${func.funcao}==EDA" name="eda" th:text="${func.funcao}" />
 				</div>
 
 			</div>
@@ -115,8 +121,15 @@
 			let nome = $(this).attr("name");
 			if (nome == "m5") {
 				$("[name=hro]").prop("checked", false);
-			} else {
+				$("[name=eda]").prop("checked", false);
+			} 
+			else if (nome == "eda") {
+				$("[name=hro]").prop("checked", false);
 				$("[name=m5]").prop("checked", false);
+			} 
+			else {
+				$("[name=m5]").prop("checked", false);
+				$("[name=eda]").prop("checked", false);
 			}
 		});
 	</script>
