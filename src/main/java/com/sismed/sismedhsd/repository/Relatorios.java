@@ -24,6 +24,12 @@ public interface Relatorios extends JpaRepository<Escala, Integer> {
 			+ "year(a.data) = :ano AND b.categoria = :categoria group by b.crm", nativeQuery=true)
 	public List<Object> getContagemHro(@Param("mes") int mes, @Param("ano") int ano, 
 			@Param("categoria") String categoria);
+
+	@Query(value = "SELECT count(a.medico_eda_crm), b.nome, b.crm FROM escala a "
+			+ "INNER JOIN medico b ON a.medico_eda_crm = b.crm WHERE month(a.data) = :mes AND "
+			+ "year(a.data) = :ano AND b.categoria = :categoria group by b.crm", nativeQuery=true)
+	public List<Object> getContagemEda(@Param("mes") int mes, @Param("ano") int ano, 
+			@Param("categoria") String categoria);
 	
 	/*Exceto para sábado e domingo*/
 	@Query(value = "SELECT count(turno) contTurno, b.nome, b.crm FROM escala a INNER JOIN medico b " 
@@ -62,7 +68,7 @@ public interface Relatorios extends JpaRepository<Escala, Integer> {
 	@Query(value = "SELECT count(turno), b.nome, b.crm FROM ordem a INNER JOIN medico b "
 					+"INNER JOIN escala c ON b.crm = a.medico_crm AND "
 					+"a.escala_id = c.id WHERE month(c.data) = :mes AND year(c.data) = :ano "
-					+"AND weekday(c.data) = 5 OR weekday(c.data) = 6 GROUP BY b.crm", nativeQuery = true)
+					+"AND (weekday(c.data) = 5 OR weekday(c.data) = 6) GROUP BY b.crm", nativeQuery = true)
 	public List<Object> getCountFds(@Param("mes") int mes, @Param("ano") int ano);
 
 	@Query(value = "SELECT count(turno), b.nome, b.crm FROM ordem a INNER JOIN medico b "

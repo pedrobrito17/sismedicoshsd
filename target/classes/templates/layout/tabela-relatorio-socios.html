@@ -19,6 +19,12 @@
 				</div>		
 			</tr>
 			<tr>
+				<th>EDA</th>
+				<div th:each="nome,id3 : ${nomeMedicos}">	
+					<td class="text-center" th:attr="id=l03_cel+${id3.count}">0</td>		
+				</div>		
+			</tr>
+			<tr>
 				<th>Manhã</th>
 				<div th:each="nome,id : ${nomeMedicos}">
 					<td class="text-center" th:attr="id=manha_cel+${id.count}">0</td>
@@ -93,6 +99,7 @@
 		var nomes = /*[[${nomeMedicos}]]*/ "e";
 		var contM5 = /*[[${contM5}]]*/ "c";
 		var contHro = /*[[${contHro}]]*/ "d";
+		var contEda = /*[[${contEda}]]*/ "u";
 		var contManha = /*[[${contManha}]]*/ "a";
 		var contTurnosFolga = /*[[${contTurnosFolga}]]*/ "k";
 		var lista_t1 = /*[[${lista_t1}]]*/ "l";
@@ -103,8 +110,7 @@
 		var lista_t6 = /*[[${lista_t6}]]*/ "y";
 		var lista_n1 = /*[[${lista_n1}]]*/ "h";
 		var lista_n2 = /*[[${lista_n2}]]*/ "x";
-		var qtd_fds = /*[[${qtd_fds}]]*/ "o";
-		
+		var qtd_fds = /*[[${qtd_fds}]]*/ "o";		
 		
 		var qtdCelulas = nomes.length;
 		
@@ -123,6 +129,14 @@
 				if(valNome.text() == contHro[j].nome){
 					$('#l02_cel'+i).empty();
 					$('#l02_cel'+i).append(contHro[j].cont);
+				}
+			}
+			/* Escreve na linha EDA */
+			for(var j in contEda){
+				var valNome = $("#medico"+i);
+				if(valNome.text() == contEda[j].nome){
+					$('#l03_cel'+i).empty();
+					$('#l03_cel'+i).append(contEda[j].cont);
 				}
 			}
 			/* Escreve na linha manhã */

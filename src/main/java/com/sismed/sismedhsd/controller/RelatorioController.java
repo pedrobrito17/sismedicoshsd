@@ -63,6 +63,7 @@ public class RelatorioController {
 		mv.addObject("nomeMedicos", relatorioService.getNomeMedicos( session.getMes() , session.getAno() , "socio"));
 		mv.addObject("contM5", relatorioService.getM5ParaTabela( session.getMes() , session.getAno() , "socio"));
 		mv.addObject("contHro", relatorioService.getHroParaTabela(session.getMes() , session.getAno(), "socio"));
+		mv.addObject("contEda", relatorioService.getEdaParaTabela(session.getMes() , session.getAno(), "socio"));
 		mv.addObject("contManha", relatorioService.getMedicosManha(session.getMes() , session.getAno(), "socio"));
 		mv.addObject("contTurnosFolga", relatorioService.getQuantTurnos(session.getMes() , session.getAno()));
 
